@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
+
+  <title>D&D Character Generator</title>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="tabs">
+        <button class="tab-button" data-tab="formTab">Form</button>
+        <button class="tab-button" data-tab="yamlTab">YAML</button>
+      </div>
+      <div class="tab-content" id="formTab">
+        <form id="yamlForm">
+          <!-- Basic Information -->
+          <div class="form-group">
+            <div>Race</div>
+            <div>Class</div>
+            <div>Level</div>
+            <div>Name</div>
+            <div>Prof. Mod</div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="race" name="race" placeholder="Race">
+            <input type="text" id="class" name="class" placeholder="Class">
+            <input type="number" id="level" name="level" min="1" placeholder="Level">
+            <input type="text" id="name" name="name" placeholder="Name">
+            <input type="text" id="proficiencyModifier" name="proficiencyModifier" placeholder="Proficiency Modifier">
+          </div>
+      
+          <!-- HP, AC, Initiative -->
+
+          <div class="form-group">
+            <div>HP</div>
+            <div>Hit Dice</div>
+            <div>AC</div>
+            <div>Init. Mod.</div>
+          </div>
+          <div class="form-group">
+            <input type="number" id="hpValue" name="hpValue" placeholder="HP Value">
+            <input type="text" id="hpDice" name="hpDice" placeholder="HP Dice">
+            <input type="number" id="acValue" name="acValue" placeholder="AC Value">
+            <input type="text" id="initiativeModifier" name="initiativeModifier" placeholder="Initiative Modifier">
+          </div>
+      
+          <!-- Stats -->
+<!-- Stats -->
+<div class="form-group">
+  <div>STR</div>
+  <div>DEX</div>
+  <div>CON</div>
+  <div>INT</div>
+  <div>WIS</div>
+  <div>CHA</div>
+
+</div>
+<div class="form-group">
+  <input type="text" id="strModifier" name="strModifier" placeholder="STR Modifier">
+  <input type="text" id="dexModifier" name="dexModifier" placeholder="DEX Modifier">
+  <input type="text" id="conModifier" name="conModifier" placeholder="CON Modifier">
+  <input type="text" id="intModifier" name="intModifier" placeholder="INT Modifier">
+  <input type="text" id="wisModifier" name="wisModifier" placeholder="WIS Modifier">
+  <input type="text" id="chaModifier" name="chaModifier" placeholder="CHA Modifier">
+</div>
+
+<!-- Skills and Saving Throws -->
+<div id="skillsContainer">
+  <!-- Strength Skills -->
+   <div class="stat-group">
+  <div class="stat-proficiency-group" data-stat="STR">
+    <h5>Strength</h5>
+    <ul>
+    <li><label><input type="checkbox" data-skill="Saving Throw" data-stat="STR"> Saving Throw</label></li>
+    <li><label><input type="checkbox" data-skill="Athletics" data-stat="STR"> Athletics</label></li>
+  </ul>
+  </div>
+
+  <!-- Dexterity Skills -->
+  <div class="stat-proficiency-group" data-stat="DEX">
+    <h5>Dexterity</h5>
+    <ul>
+    <li><label><input type="checkbox" data-skill="Saving Throw" data-stat="DEX"> Saving Throw</label></li>
+    <li><label><input type="checkbox" data-skill="Acrobatics" data-stat="DEX"> Acrobatics</label></li>
+    <li><label><input type="checkbox" data-skill="Sleight of Hand" data-stat="DEX"> S. of Hand</label></li>
+    <li><label><input type="checkbox" data-skill="Stealth" data-stat="DEX"> Stealth</label></li>
+  </ul>
+  </div>
+
+  <!-- Constitution Skills -->
+  <div class="stat-proficiency-group" data-stat="CON">
+    <h5>Constitution</h5>
+    <ul>
+
+      <li><label><input type="checkbox" data-skill="Saving Throw" data-stat="CON"> Saving Throw</label></li>
+  </ul>
+  </div>
+</div>
+<div class="stat-group">
+
+  <!-- Intelligence Skills -->
+  <div class="stat-proficiency-group" data-stat="INT">
+    <h5>Intelligence</h5>
+    <ul>
+      <li><label><input type="checkbox" data-skill="Saving Throw" data-stat="INT"> Saving Throw</label></li>
+        <li><label><input type="checkbox" data-skill="Arcana" data-stat="INT"> Arcana</label></li>
+    <li><label><input type="checkbox" data-skill="History" data-stat="INT"> History</label></li>
+    <li><label><input type="checkbox" data-skill="Investigation" data-stat="INT"> Investigation</label></li>
+    <li><label><input type="checkbox" data-skill="Nature" data-stat="INT"> Nature</label></li>
+    <li><label><input type="checkbox" data-skill="Religion" data-stat="INT"> Religion</label></li>
+  </ul>
+  </div>
+
+  <!-- Wisdom Skills -->
+  <div class="stat-proficiency-group" data-stat="WIS">
+    <h5>Wisdom</h5>
+    <ul>
+    <li><label><input type="checkbox" data-skill="Saving Throw" data-stat="WIS"> Saving Throw</label></li>
+    <li><label><input type="checkbox" data-skill="Animal Handling" data-stat="WIS"> Animal Handling</label></li>
+    <li><label><input type="checkbox" data-skill="Insight" data-stat="WIS"> Insight</label></li>
+    <li><label><input type="checkbox" data-skill="Medicine" data-stat="WIS"> Medicine</label></li>
+    <li><label><input type="checkbox" data-skill="Perception" data-stat="WIS"> Perception</label></li>
+    <li><label><input type="checkbox" data-skill="Survival" data-stat="WIS"> Survival</label></li>
+  </ul>
+  </div>
+
+  <!-- Charisma Skills -->
+  <div class="stat-proficiency-group" data-stat="CHA">
+    <h5>Charisma</h5>
+    <ul>
+    <li><label><input type="checkbox" data-skill="Saving Throw" data-stat="CHA"> Saving Throw</label></li>
+    <li><label><input type="checkbox" data-skill="Deception" data-stat="CHA"> Deception</label></li>
+    <li><label><input type="checkbox" data-skill="Intimidation" data-stat="CHA"> Intimidation</label></li>
+    <li><label><input type="checkbox" data-skill="Performance" data-stat="CHA"> Performance</label></li>
+    <li><label><input type="checkbox" data-skill="Persuasion" data-stat="CHA"> Persuasion</label></li>
+  </ul>
+  </div>
+</div>
+</div>
+
+      
+          <!-- Features -->
+          <h3>Features</h3>
+          <div id="featuresContainer"></div>
+          <button type="button" id="addFeatureButton">Add Feature</button>
+      
+          <!-- Weapons -->
+          <h3>Weapons</h3>
+          <div id="weaponsContainer"></div>
+          <button type="button" id="addWeaponButton">Add Weapon</button>
+      
+          <!-- Spells -->
+          <h3>Spells</h3>
+          <div id="spellsContainer"></div>
+          <button type="button" id="addSpellButton">Add Spell</button>
+      
+          <!-- Traits -->
+          <h3>Traits</h3>
+          <div id="traitsContainer"></div>
+          <button type="button" id="addTraitButton">Add Trait</button>
+        </form>
+      </div>
+      
+      <div class="tab-content" id="yamlTab">
+        <h2>Enter YAML Code</h2>
+        <div id="yamlContainer">
+          <textarea class="yamlInput" id="yamlTextarea"></textarea>
+        </div>
+        <button id="addyamlButton">Add Another YAML</button>
+      </div>
+      <div class="action-container">
+        <div class="toggle-container">
+          <label for="twoPagesToggle">Separate Spell Card</label>
+          <input type="checkbox" id="twoPagesToggle">
+        </div>
+      </div>
+  
+    </div>
+    <div class="right">
+      <h2>HTML Sandbox</h2>
+      <div id="htmlSandbox" class="sandbox"></div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="form.js"></script>
+  <script src="generate.js"></script>
+</body>
+</html>
+
+
+
+
+

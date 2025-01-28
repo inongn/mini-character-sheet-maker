@@ -1,0 +1,302 @@
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      background-color: #fafafa;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+      gap: 20px;
+    }
+    .left {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
+    .right {
+      width: 55%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      border-radius: 4px;
+      height:fit-content;
+      position:sticky;
+      top:20px;
+    }
+    #yamlContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #htmlSandbox.sandbox {
+      position:sticky;
+      top:0;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      font-size: 14px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    #addyamlButton{
+      margin-top: 10px;
+      padding: 10px 12px;
+    }
+
+
+    button:hover {
+      background-color: #218838;
+    }
+    .sandbox {
+      border: 0;
+      padding: 0;
+      background-color: #fff;
+      min-height: 300px;
+      overflow-y: auto;
+      border-radius: 4px;
+    }
+    .card {
+      display: grid;
+      grid-template-columns: 0.2fr 1.8fr;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-family: Arial Narrow;
+      padding: 12px;
+      border: 1px solid black;
+      background-color: #fff;
+      width: 5in;
+    }
+
+    .spell-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-family: Arial Narrow;
+      padding: 12px;
+      border: 1px solid black;
+      background-color: #fff;
+      width: 5in;
+    }
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 160px;
+    }
+    .right-column {
+      display: grid;
+      grid-template-rows: min-content min-content auto;
+      gap: 1px;
+    }
+
+    .wide-column {
+      display: grid;
+      grid-template-rows: repeat(4, auto);
+      gap: 1px;
+    }
+
+    .grid-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 4px;
+    }
+    .triple-grid-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4px;
+    }
+    .grid-item {
+      border-radius: 4px;
+      text-align: center;
+    }
+    .subgrid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1px;
+      text-align: left;
+    }
+    .radio-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      font-size: smaller;
+      line-height: 0.8%;
+      margin-bottom: 4px;
+    }
+    h2 {
+      font-size: 1em;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 1px;
+      display: grid;
+      grid-template-columns: 1fr max-content 1fr;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h2:before,
+    h2:after {
+      content: '';
+      height: 1px;
+      background-color: #CBD5E1;
+    }
+    h3 {
+      font-size: 0.9em;
+      text-align: left;
+      margin: 1px;
+      margin-top: 6px;
+      font-weight: normal;
+      font-style: italic;
+    }
+    h3:before {
+      content: "   ";
+    }
+    .important-number {
+      font-family: Times New Roman;
+      font-size: 2em;
+      color: #000;
+      margin-bottom: 1px;
+      margin-top: 1px;
+      text-align: center;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul li {
+      margin: 1px 0;
+      font-size: 0.9em;
+      text-align: left;
+    }
+    #STR, #DEX, #CON, #INT, #WIS, #CHA {
+      background-color: #F5F5F5;
+      padding: 4px;
+    }
+    #HP .important-number {
+      text-align: right;
+    }
+    #HP .important-number:before {
+      content: "/";
+    }
+    .character-info, .proficiency {
+      text-align: center;
+    }
+    #Traits {
+      background-color: #F5F5F5;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .action-container {
+      display: grid;
+      align-items: center;
+      gap: 10px; /* Adjust spacing between the toggle and button as needed */
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .toggle-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .toggle-container label {
+      margin-right: 5px; /* Add some spacing between the label and checkbox */
+    }
+
+    @media print {
+      @page {
+        size: letter landscape;
+        margin: 0.5in;
+      }
+      .left{
+        height:0px;
+      }
+      body * {
+        visibility: hidden;
+        overflow: hidden;
+      }
+      #htmlSandbox, #htmlSandbox * {
+        visibility: visible;
+      }
+      #htmlSandbox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        overflow: visible !important;
+      }
+      .sandbox {
+        min-height: auto !important;
+      }
+      .card {
+        page-break-inside: avoid;
+        height: 7in;
+        overflow: hidden;
+      }
+
+
+    }
+
+    .form-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); /* Adjust column size */
+      gap: 10px; /* Add spacing between inputs */
+      width: 100%; /* Ensure it spans the container width */
+      box-sizing: border-box; /* Include padding/border in total width */
+    }
+    
+    .form-group div {
+      width: 100%; /* Ensure wrapper div spans the column */
+    }
+    
+    .form-group input {
+      width: 100%; /* Make inputs fill their parent divs */
+      padding: 10px; /* Add padding for better look */
+      border: 1px solid #ccc; /* Border for inputs */
+      border-radius: 4px; /* Rounded corners */
+      box-sizing: border-box; /* Include padding/border in total width */
+    }
+    
+    .feature-group{
+      grid-template-columns: 20px repeat(auto-fit, minmax(10px, 1fr));
+    }
+
+    .stat-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); /* Adjust column size */
+      gap: 10px; /* Add spacing between inputs */
+      width: 100%; /* Ensure it spans the container width */
+      box-sizing: border-box; /* Include padding/border in total width */
+    }
+    
+    .stat-group div {
+      width: 100%; /* Ensure wrapper div spans the column */
+    }
+    
+    .stat-group input {
+      padding: 10px; /* Add padding for better look */
+      border: 1px solid #ccc; /* Border for inputs */
+      border-radius: 4px; /* Rounded corners */
+      box-sizing: border-box; /* Include padding/border in total width */
+    }
+    
