@@ -61,7 +61,7 @@ function buildSingleStat(yaml, stat) {
     const { hp, ac, initiative } = yaml.card;
     return `
       <div class="triple-grid-row">
-        ${generateSection(`HP(${hp.dice})`, `<p class="important-number">${hp.value}</p>`)}
+        ${generateSection(`HP(${hp.dice})`, `<p class="important-number hp">/${hp.value}</p>`)}
         ${generateSection("AC", `<p class="important-number">${ac.value}</p>`)}
         ${generateSection("INIT", `<p class="important-number">${initiative.modifier}</p>`)}
       </div>
@@ -78,7 +78,7 @@ function buildSingleStat(yaml, stat) {
     const featuresHtml = Object.entries(featuresByOrigin)
       .map(
         ([origin, features]) =>
-          `<h3>${origin}</h3>${generateList(features, f => `<li><strong>${f.name}:</strong> ${f.description}</li>`)}`
+          `<h3 class="feature-origin">${origin}</h3>${generateList(features, f => `<li><strong>${f.name}:</strong> ${f.description}</li>`)}`
       )
       .join("");
   
@@ -174,3 +174,14 @@ function buildSingleStat(yaml, stat) {
 
   }
   
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("featureOriginToggle");
+    const featureOrigins = document.querySelectorAll(".feature-origin");
+
+    toggle.addEventListener("change", function () {
+      featureOrigins.forEach((element) => {
+        element.style.display = this.checked ? "none" : "block";
+      });
+    });
+  });

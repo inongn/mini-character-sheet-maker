@@ -162,6 +162,10 @@
           description: I was raised into the monster hunter life. I tried to get out, but it got to me again.
         - name: Bond
           description: My dad is missing, and we need to find him.
+        - name: Proficiencies
+          description: Disguise Kit, Lute
+        - name: Languages
+          description: Common, Undercommon
     `;
     
       // Set default YAML content
@@ -170,3 +174,30 @@
       updateHtmlSandbox();
     });
     
+    const tabs = document.querySelectorAll(".tab-button");
+    const tabContents = document.querySelectorAll(".tab-content");
+    
+    // Tab Switching Logic
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetTab = tab.getAttribute("data-tab");
+    
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove("active"));
+    
+        // Add active class to the clicked tab
+        tab.classList.add("active");
+    
+        // Show the correct tab content
+        tabContents.forEach((content) => {
+          content.style.display = content.id === targetTab ? "block" : "none";
+        });
+      });
+    });
+    
+    // Set default active tab
+    const defaultTab = document.querySelector(".tab-button[data-tab='formTab']");
+    if (defaultTab) {
+      defaultTab.classList.add("active");
+      defaultTab.click();
+    }
