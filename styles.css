@@ -237,7 +237,6 @@
 
       body * {
         visibility: hidden;
-        overflow: hidden;
       }
 
       body {
@@ -279,6 +278,7 @@
       gap: 10px; /* Add spacing between inputs */
       width: 100%; /* Ensure it spans the container width */
       box-sizing: border-box; /* Include padding/border in total width */
+      align-items:center;
     }
     
     .form-group div {
@@ -316,12 +316,13 @@
       box-sizing: border-box; /* Include padding/border in total width */
     }
 
-.delete-row-button{
+.delete-row-icon{
   background-color: rgba(0,0,0,0);
+  padding-left:5px;
   color: red;
 }
 
-.delete-row-button:hover{
+.delete-row-icon:hover{
   background-color: rgba(0,0,0,0);
   color: rgb(144, 14, 14);
 }
@@ -410,4 +411,12 @@ h3 {
 
 .hp{
   text-align:right;
+}
+
+.tabs{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-left:20px;
+  padding-right:40px;
 }
