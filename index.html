@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css?v0.2">
+  <link rel="stylesheet" href="styles.css?v0.3">
   <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-  <title>D&D Character Generator</title>
+  <title>Compact Character Sheet</title>
 </head>
 <body>
   <div class="container">
@@ -14,15 +20,16 @@
       <div class="tabs">
         <button class="tab-button" data-tab="formTab">Form</button>
         <button class="tab-button" data-tab="yamlTab">YAML</button>
-        Hint: Hit Ctrl/Command + P to print.
+        Hint:  Ctrl/Command + P to print or save to PDF.
       </div>
       <div class="tab-content" id="formTab">
         <form id="yamlForm">
           <!-- Basic Information -->
           <div class="form-section" id="basic-information">
-            <div class="form-section-header">
-              <h2>Basic Information</h2>
-            </div>
+           <div class="form-section-header">
+               <span><i class="fas fa-id-card"></i> Basic Information</span>
+              <i class="fas fa-chevron-down toggle-arrow"></i>
+          </div>
           <div class="form-section-content">
           <div class="form-group">
             <div>Name</div>
@@ -64,7 +71,8 @@
 
 <div class="form-section" id="stats">
 <div class="form-section-header">
-<h2>Stats</h2>
+  <span><i class="fas fa-dice-d20"></i> Stats</span>
+  <i class="fas fa-chevron-down toggle-arrow"></i>
 </div>
 <div class="form-section-content">
 <div class="form-group">
@@ -165,8 +173,9 @@
 <div class="form-section">
  
   <div class="form-section-header">
-    <h2>Features</h2>
-  </div>
+    <span><i class="fas fa-star"></i> Features</span>
+    <i class="fas fa-chevron-down toggle-arrow"></i>
+</div>
   <div class="form-section-content">
   <div id="featuresContainer" ></div>
   <button type="button" id="addFeatureButton" class ="addButton">Add Feature</button>
@@ -176,8 +185,9 @@
 <!-- Weapons -->
 <div class="form-section">
   <div class="form-section-header">
-    <h2>Weapons</h2>
-  </div>
+    <span><i class="fas fa-hand-fist"></i> Weapons</span>
+    <i class="fas fa-chevron-down toggle-arrow"></i>
+</div>
   <div class="form-section-content">
 
   <div id="weaponsContainer" ></div>
@@ -188,8 +198,9 @@
 <!-- Spells -->
 <div class="form-section">
   <div class="form-section-header">
-    <h2>Spells</h2>
-  </div>
+    <span><i class="fas fa-magic"></i> Spells</span>
+    <i class="fas fa-chevron-down toggle-arrow"></i>
+</div>
   <div class="form-section-content">
 
   <div id="spellsContainer" ></div>
@@ -226,8 +237,9 @@
 <!-- Traits -->
 <div class="form-section">
   <div class="form-section-header">
-    <h2>Traits</h2>
-  </div>
+    <span><i class="fas fa-user"></i> Traits</span>
+    <i class="fas fa-chevron-down toggle-arrow"></i>
+</div>
   <div class="form-section-content">
 
   <div id="traitsContainer" ></div>
@@ -263,13 +275,13 @@
     </div>
   </div>
 
-  <script src="main.js?v0.2"></script>
-  <script src="form.js?v0.2"></script>
-  <script src="updateFormFromYaml.js"></script>
-  <script src="updateYamlFromForm.js"></script>
+  <script src="main.js?v0.3"></script>
+  <script src="form.js?v0.3"></script>
+  <script src="updateFormFromYaml.js?v0.3"></script>
+  <script src="updateYamlFromForm.js?v0.3"></script>
 
-  <script src="toggles.js?v0.2"></script>
-  <script src="generate.js?v0.2"></script>
+  <script src="toggles.js?v0.3"></script>
+  <script src="generate.js?v0.3"></script>
 
 </body>
 </html>

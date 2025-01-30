@@ -119,7 +119,7 @@ function createInputElement(type, index, data = {}) {
     .join("");
 
   div.innerHTML = `
-    <button type="button" class="delete-row-button" data-${type}-index="${index}">x</button>
+    <button type="button" class="delete-row-button" data-${type}-index="${index}"><i class="fas fa-x"></i></button>
     ${inputs}
   `;
 
