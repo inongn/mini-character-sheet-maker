@@ -68,17 +68,20 @@ function buildSingleStat(yaml, stat) {
     `;
   }
   
-  function generateFeatures(yaml) {
+  function generateFeatures(yaml, showFeatureSources) {
     const featuresByOrigin = yaml.card.features.reduce((acc, feature) => {
       acc[feature.origin] = acc[feature.origin] || [];
       acc[feature.origin].push(feature);
       return acc;
     }, {});
-  
+    
+    const sourcesDisplay = showFeatureSources ? "" : "none";
+
+
     const featuresHtml = Object.entries(featuresByOrigin)
       .map(
         ([origin, features]) =>
-          `<h3 class="feature-origin">${origin}</h3>${generateList(features, f => `<li><strong>${f.name}:</strong> ${f.description}</li>`)}`
+          `<h3 class="feature-origin" style="display:${sourcesDisplay}">${origin}</h3>${generateList(features, f => `<li><strong>${f.name}:</strong> ${f.description}</li>`)}`
       )
       .join("");
   
@@ -90,7 +93,7 @@ function buildSingleStat(yaml, stat) {
     return generateSection("Weapons", weaponsHtml);
   }
   
-  function generateSpells(yaml, isTwoPages) {
+  function generateSpells(yaml) {
     const { spells, spell_slots } = yaml.card;
     if (!spells || spells.length === 0) return "";
   
@@ -129,7 +132,7 @@ function buildSingleStat(yaml, stat) {
     return generateSection("Traits", traitsHtml);
   }
   
-  function generateHtmlFromyaml(yaml, isTwoPages) {
+  function generateHtmlFromyaml(yaml, isTwoPages, showFeatureSources) {
     const { name, level, race, class: className, proficiency_modifier } = yaml.card;
     const leftColumn = `
       <div class="character-info">
@@ -142,21 +145,24 @@ function buildSingleStat(yaml, stat) {
       ${generateAbilities(yaml)}
     `;
   
-    const rightColumn = `
+    const rightColumnTop = `
       ${generateHpAcInit(yaml)}
-      ${generateFeatures(yaml)}
-      ${generateWeapons(yaml)}
     `;
+
+    const rightColumnMiddle = `
+    ${generateFeatures(yaml, showFeatureSources)}
+    ${generateWeapons(yaml)}
+  `;
   
     const spellSection = generateSpells(yaml, isTwoPages);
-    const traitsSection =`
+    const rightColumnBottom =`
     ${generateTraits(yaml)}
     `;
     if (isTwoPages) {
       return `
         <div class="card">
           <div class="left-column">${leftColumn}</div>
-          <div class="right-column">${rightColumn}${traitsSection}</div>
+          <div class="right-column">${rightColumnTop}<div class="right-column-middle">${rightColumnMiddle}${rightColumnBottom}</div></div>
           
         </div>
         <div class="spell-card">
@@ -168,20 +174,7 @@ function buildSingleStat(yaml, stat) {
     return `
       <div class="card">
         <div class="left-column">${leftColumn}</div>
-        <div class="right-column">${rightColumn}${spellSection}${traitsSection}</div>
+          <div class="right-column">${rightColumnTop}<div class="right-column-middle">${rightColumnMiddle}${spellSection}${rightColumnBottom}</div></div>
       </div>
     `;
-
   }
-  
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.getElementById("featureOriginToggle");
-    const featureOrigins = document.querySelectorAll(".feature-origin");
-
-    toggle.addEventListener("change", function () {
-      featureOrigins.forEach((element) => {
-        element.style.display = this.checked ? "none" : "block";
-      });
-    });
-  });

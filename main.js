@@ -14,6 +14,7 @@
     function updateHtmlSandbox() {
       const textareas = document.querySelectorAll('.yamlInput');
       const isTwoPages = document.getElementById('twoPagesToggle').checked;
+      const showFeatureSources = document.getElementById('featureOriginToggle').checked;
       let combinedHTML = '';
   
       textareas.forEach((textarea) => {
@@ -26,12 +27,13 @@
           document.getElementById('htmlSandbox').innerHTML = `<div class="error">Invalid yaml format detected.</div>`;
           return;
         }
-        const htmlOutput = generateHtmlFromyaml(yamlObject, isTwoPages);
+        const htmlOutput = generateHtmlFromyaml(yamlObject, isTwoPages, showFeatureSources);
         combinedHTML += htmlOutput;
       });
   
       document.getElementById('htmlSandbox').innerHTML = combinedHTML;
-      fitCards();
+      adjustTextSize();
+
     }
   
     // Attach input listeners to all current textareas
@@ -56,23 +58,9 @@
     // Initial setup: attach listeners to existing elements
     attachInputListeners();
     addToggleListener();
+    
   
     
-    function fitCards() {
-      const maxHeightPx = 7 * 96;
-      const allCards = document.querySelectorAll('.card');
-      allCards.forEach(card => {
-        const cardHeight = card.scrollHeight;
-        if (cardHeight > maxHeightPx) {
-          const ratio = maxHeightPx / cardHeight;
-          const sections = card.querySelectorAll('#Features, #Weapons, #Spells, #Traits');
-          sections.forEach(section => {
-            const currentSize = parseFloat(window.getComputedStyle(section).fontSize);
-            section.style.fontSize = (currentSize * ratio) + 'px';
-          });
-        }
-      });
-    }
     document.addEventListener("DOMContentLoaded", () => {
       // Default YAML content
       const defaultYaml = `
@@ -201,3 +189,4 @@
       defaultTab.classList.add("active");
       defaultTab.click();
     }
+

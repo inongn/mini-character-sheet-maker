@@ -141,6 +141,12 @@
       line-height: 0.8%;
       margin-bottom: 4px;
     }
+
+    .right-column-middle {
+      line-height: 1.2;
+      font-size:16px;
+    }
+
     h2 {
       font-size: 1em;
       font-weight: bold;
@@ -184,7 +190,6 @@
     }
     ul li {
       margin: 1px 0;
-      font-size: 0.9em;
       text-align: left;
     }
     #STR, #DEX, #CON, #INT, #WIS, #CHA {
@@ -204,6 +209,7 @@
       background-color: #F5F5F5;
       padding: 10px;
       border-radius: 4px;
+      margin-top:10px;
     }
     #Traits h2{
       display:none;
