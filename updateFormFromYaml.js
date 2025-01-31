@@ -71,8 +71,8 @@ function populateSpellSlots(card) {
 }
 
 function addDeleteButtonListeners() {
-  document.querySelectorAll(".delete-row-icon").forEach((i) => {
-    i.addEventListener("click", (event) => {
+  document.querySelectorAll(".delete-row-button").forEach((button) => {
+    button.addEventListener("click", (event) => {
       const parent = event.target.parentElement;
       parent.remove();
       updateYamlFromForm(); // Sync YAML after deletion
@@ -119,7 +119,7 @@ function createInputElement(type, index, data = {}) {
     .join("");
 
   div.innerHTML = `
-    <i class="fas fa-x delete-row-icon"></i>
+    <button type="button" class="delete-row-button" data-${type}-index="${index}"><i class="fas fa-x"></i></button>
     ${inputs}
   `;
 
