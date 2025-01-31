@@ -98,5 +98,3 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 100);
   }
 });
-
-updateFormFromYaml();
