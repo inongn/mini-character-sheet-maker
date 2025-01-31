@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css?v0.3.2">
+  <link rel="stylesheet" href="styles.css?v0.3.3">
   <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,102 +253,7 @@
         </form>
       </div>
       
-      <div class="tab-content" card:
-      race: Wood Elf
-      class: Rogue
-      name: Jav
-      level: 5
-      proficiency_modifier: '+3'
-      hp:
-        value: 38
-        dice: 5d8+5
-      ac:
-        value: 16
-      initiative:
-        modifier: '+3'
-      stats:
-        STR:
-          modifier: '+0'
-          proficiency: []
-        DEX:
-          modifier: '+3'
-          proficiency:
-            - Saving Throw
-            - Sleight of Hand
-            - Stealth
-            - Saving Throw
-            - Sleight of Hand
-            - Stealth
-        CON:
-          modifier: '+1'
-          proficiency: []
-        INT:
-          modifier: '+2'
-          proficiency:
-            - Saving Throw
-            - Saving Throw
-        WIS:
-          modifier: '+1'
-          proficiency:
-            - Insight
-            - Insight
-        CHA:
-          modifier: '+2'
-          proficiency:
-            - Intimidation
-            - Intimidation
-      features:
-        - origin: Rogue
-          name: Sneak Attack
-          description: >-
-            Once per turn, extra 3d6 damage to an attack if you have advantage or an
-            ally is close.
-        - origin: Rogue
-          name: Cunning Action
-          description: Dash, Disengage, or Hide as a bonus action.
-        - origin: Phantom Rogue
-          name: Wails from the Grave
-          description: >-
-            Three times per long rest, when you deal Sneak Attack damage, deal 2d6
-            damage to another foe.
-        - origin: Wood Elf
-          name: Mask of the Wild
-          description: Can attempt to hide when only lightly obscured by natural surroundings.
-        - origin: Wood Elf
-          name: Fey Ancestry
-          description: Advantage on saving throws against being charmed.
-        - origin: Rogue
-          name: Uncanny Dodge
-          description: As a reaction, halve the damage of an attack you can see.
-        - origin: Phantom Rogue
-          name: Whispers of the Dead
-          description: After each rest, gain temporary proficiency in one skill.
-      weapons:
-        - name: Dagger
-          description: +7 to hit; 1d8+3 piercing
-        - name: Dagger
-          description: (Bonus Action) +4 to hit; 1d8 piercing
-        - name: Shortbow
-          description: +7 to hit; 1d6+3 piercing (80/320 ft.)
-      spells:
-        - level: Cantrip
-          name: Thaumaturgy
-          description: Create eerie sounds, tremors, or visual effects to intimidate.
-        - level: Cantrip
-          name: Eldritch Blast
-          description: >-
-            Create two beams of necrotic energy. Each has +5 to hit and deals 1d10
-            necrotic damage.
-        - level: '1'
-          name: Hex
-          description: >-
-            Curse a target, dealing an extra 1d6 necrotic damage per subsequent hit,
-            and imposing disadvantage on one ability check.
-      spell_slots:
-        - level: 1
-          slots: 1
-      traits: []
-    id="yamlTab">
+      <div class="tab-content" id="yamlTab">
         <div id="yamlContainer">
           <textarea class="yamlInput" id="yamlTextarea"></textarea>
         </div>
@@ -364,7 +269,6 @@
           <label for="featureOriginToggle">Show Feature Sources</label>
           <input type="checkbox" id="featureOriginToggle">
         </div>
-        <button id="test">Test</button>
       </div>
   
     </div>
@@ -373,13 +277,13 @@
     </div>
   </div>
 
-  <script src="main.js?v0.3.2"></script>
-  <script src="form.js?v0.3.2"></script>
-  <script src="updateFormFromYaml.js?v0.3.2"></script>
-  <script src="updateYamlFromForm.js?v0.3.2"></script>
+  <script src="main.js?v0.3.3"></script>
+  <script src="form.js?v0.3.3"></script>
+  <script src="updateFormFromYaml.js?v0.3.3"></script>
+  <script src="updateYamlFromForm.js?v0.3.3"></script>
 
-  <script src="toggles.js?v0.3.2"></script>
-  <script src="generate.js?v0.3.2"></script>
+  <script src="toggles.js?v0.3.3"></script>
+  <script src="generate.js?v0.3.3"></script>
 
 </body>
 </html>
