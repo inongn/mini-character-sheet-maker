@@ -74,19 +74,22 @@ function buildSingleStat(yaml, stat) {
       acc[feature.origin].push(feature);
       return acc;
     }, {});
-    
+      
     const sourcesDisplay = showFeatureSources ? "" : "none";
-
-
+  
     const featuresHtml = Object.entries(featuresByOrigin)
-      .map(
-        ([origin, features]) =>
-          `<h3 class="feature-origin" style="display:${sourcesDisplay}">${origin}</h3>${generateList(features, f => `<li><strong>${f.name}:</strong> ${f.description}</li>`)}`
+      .map(([origin, features]) =>
+        `<h3 class="feature-origin" style="display:${sourcesDisplay}">${origin}</h3>${generateList(features, f => {
+          const resourceRadios = f.resources ? Array.from({length: f.resources}, (_, i) => 
+            `<input type="radio" name="${f.name.replace(/\s+/g, '')}Resource" value="${i + 1}">`).join("") : "";
+          return `<li><strong>${f.name}:</strong> ${f.description} ${resourceRadios}</li>`;
+        })}`
       )
       .join("");
   
     return generateSection("Features", featuresHtml);
   }
+  
   
   function generateWeapons(yaml) {
     const weaponsHtml = generateList(yaml.card.weapons, w => `<li><strong>${w.name}:</strong> ${w.description}</li>`);
@@ -133,7 +136,15 @@ function buildSingleStat(yaml, stat) {
   }
   
   function generateHtmlFromyaml(yaml, isTwoPages, showFeatureSources) {
-    const { name, level, race, class: className, proficiency_modifier } = yaml.card;
+    const { name, level, race, class: className, proficiency_modifier, size } = yaml.card;
+
+
+    
+    // Override isTwoPages if size is 2
+    if (size === 2) {
+      isTwoPages = true;
+    }
+  
     const leftColumn = `
       <div class="character-info">
         <h2>${name}</h2>

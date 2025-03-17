@@ -21,14 +21,16 @@ window.addEventListener("load", function () {
 });
 
 function adjustTextSize() {
-  const container = document.querySelector('.right-column-middle');
-  if (!container) return;
+  const containers = document.querySelectorAll('.right-column-middle');
+  if (!containers.length) return;
 
-  let fontSize = 16;
-  container.style.fontSize = fontSize + 'px';
-
-  while (container.scrollHeight > 615 && fontSize > 5) { // Ensure a minimum font size (e.g., 5px)
-      fontSize -= 0.1; // Decrease font size in smaller increments
+  containers.forEach(container => {
+      let fontSize = 16;
       container.style.fontSize = fontSize + 'px';
-  }
+
+      while (container.scrollHeight > 615 && fontSize > 5) { // Ensure a minimum font size (e.g., 5px)
+          fontSize -= 0.1; // Decrease font size in smaller increments
+          container.style.fontSize = fontSize + 'px';
+      }
+  });
 }

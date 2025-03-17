@@ -41,13 +41,7 @@ function addEventListeners() {
 document.addEventListener("DOMContentLoaded", function () {
   const headers = document.querySelectorAll(".form-section-header");
 
-  document.querySelectorAll(".form-section-content").forEach(content => {
-      content.style.padding = "0";
-      content.style.margin = "0";
-      content.style.opacity = "0"; // Initially hide content for smooth transition
-      content.style.transition = "max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out, margin 0.3s ease-out";
-      content.style.maxHeight = "0"; // Ensure content is collapsed by default
-  });
+  closeHeaders();
 
   headers.forEach(header => {
       header.addEventListener("click", function () {
@@ -98,3 +92,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 100);
   }
 });
+
+function closeHeaders(){
+  document.querySelectorAll(".form-section-content").forEach(content => {
+    content.style.padding = "0";
+    content.style.margin = "0";
+    content.style.opacity = "0"; // Initially hide content for smooth transition
+    content.style.transition = "max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out, margin 0.3s ease-out";
+    content.style.maxHeight = "0"; // Ensure content is collapsed by default
+});
+}

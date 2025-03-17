@@ -78,7 +78,7 @@ function reindexElements(type, containerId) {
 
   inputs.forEach((group, index) => {
     const placeholders = {
-      feature: ["origin", "name", "description"],
+      feature: ["origin", "name", "description", "resources"],
       weapon: ["name", "description"],
       spell: ["level", "name", "description"],
       trait: ["name", "description"],
@@ -94,7 +94,7 @@ function reindexElements(type, containerId) {
       const input = group.querySelector(`[data-${type}-${field}]`);
       if (input) {
         input.setAttribute(`data-${type}-${field}`, index);
-        elementData[field] = input.value;
+        elementData[field] = field === "resources" ? parseInt(input.value, 10) || 0 : input.value;
       }
     });
 

@@ -13,7 +13,7 @@
     // Function to generate HTML from yaml and update the sandbox
     function updateHtmlSandbox() {
       const textareas = document.querySelectorAll('.yamlInput');
-      const isTwoPages = document.getElementById('twoPagesToggle').checked;
+      const isTwoPages = false;
       const showFeatureSources = document.getElementById('featureOriginToggle').checked;
       let combinedHTML = '';
   
@@ -48,17 +48,8 @@
     function addInputListener(textarea) {
       textarea.addEventListener('input', updateHtmlSandbox);
     }
-  
-    // Add a change event listener to the toggle
-    function addToggleListener() {
-      const toggle = document.getElementById('twoPagesToggle');
-      toggle.addEventListener('change', updateHtmlSandbox);
-    }
-  
     // Initial setup: attach listeners to existing elements
-    attachInputListeners();
-    addToggleListener();
-    
+    attachInputListeners();    
   
     
     document.addEventListener("DOMContentLoaded", () => {
@@ -175,11 +166,12 @@
     
         // Add active class to the clicked tab
         tab.classList.add("active");
-    
         // Show the correct tab content
         tabContents.forEach((content) => {
           content.style.display = content.id === targetTab ? "block" : "none";
         });
+        closeHeaders();
+
       });
     });
     

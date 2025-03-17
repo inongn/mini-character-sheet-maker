@@ -90,6 +90,8 @@ function createInputElement(type, index, data = {}) {
       { key: "origin", placeholder: "Feature Origin" },
       { key: "name", placeholder: "Feature Name" },
       { key: "description", placeholder: "Feature Description" },
+      { key: "resources", placeholder: "Resource Slots" }, // new resource field
+
     ],
     weapon: [
       { key: "name", placeholder: "Weapon Name" },
@@ -114,7 +116,7 @@ function createInputElement(type, index, data = {}) {
   inputs = placeholders[type]
     .map(
       (field) =>
-        `<input type="text" placeholder="${field.placeholder}" data-${type}-${field.key}="${index}" value="${data[field.key] || ""}">`
+        `<input type="${field.key === 'resources' ? 'number' : 'text'}" placeholder="${field.placeholder}" data-${type}-${field.key}="${index}" value="${data[field.key] || ""}" ${field.key === 'resources' ? 'min="0"' : ''}>`
     )
     .join("");
 
