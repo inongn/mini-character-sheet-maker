@@ -5,7 +5,6 @@ function updateYamlFromForm() {
   updateBasicFields(yaml.card);
   updateCombatStats(yaml.card);
   updateStats(yaml.card);
-  updateSkillsAndSaves(yaml.card);
   updateDynamicElements(yaml.card);
   updateSpellSlots(yaml.card);
 
@@ -42,32 +41,30 @@ function updateStats(card) {
   });
 }
 
-function updateSkillsAndSaves(card) {
-  document.querySelectorAll("#skillsContainer input").forEach(checkbox => {
-    const stat = checkbox.dataset.stat;
-    const skill = checkbox.dataset.skill;
-    card.stats[stat].proficiency = card.stats[stat].proficiency || [];
-    if (checkbox.checked) {
-      card.stats[stat].proficiency.push(skill);
-    }
-  });
-}
 
 function updateDynamicElements(card) {
   card.features = reindexElements("feature", "featuresContainer");
+  card.actions = reindexElements("action", "actionsContainer"); // Add this line
   card.weapons = reindexElements("weapon", "weaponsContainer");
   card.spells = reindexElements("spell", "spellsContainer");
   card.traits = reindexElements("trait", "traitsContainer");
 }
 
 function updateSpellSlots(card) {
-  card.spell_slots = [];
+  const spellSlots = [];
 
   for (let i = 1; i <= 9; i++) {
     const slotInput = document.getElementById(`spell-slots-lv-${i}`);
-    if (slotInput && slotInput.value !== "") {
-      card.spell_slots.push({ level: i, slots: parseInt(slotInput.value, 10) || 0 });
+    const val = parseInt(slotInput?.value, 10);
+    if (slotInput && slotInput.value !== "" && val > 0) {
+      spellSlots.push({ level: i, slots: val });
     }
+  }
+
+  if (spellSlots.length > 0) {
+    card.spell_slots = spellSlots;
+  } else {
+    delete card.spell_slots; // avoid polluting the YAML
   }
 }
 
@@ -79,6 +76,7 @@ function reindexElements(type, containerId) {
   inputs.forEach((group, index) => {
     const placeholders = {
       feature: ["origin", "name", "description", "resources"],
+      action: ["type", "name", "description", "resources"], // Add resources here
       weapon: ["name", "description"],
       spell: ["level", "name", "description"],
       trait: ["name", "description"],

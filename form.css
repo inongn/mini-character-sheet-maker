@@ -1,0 +1,155 @@
+/* === Form Section Styles === */
+.form-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); /* Adjust column size */
+    gap: 10px; /* Add spacing between inputs */
+    width: 100%; /* Ensure it spans the container width */
+    box-sizing: border-box; /* Include padding/border in total width */
+    align-items:center;
+  }
+  
+  .form-group div {
+    width: 100%; /* Ensure wrapper div spans the column */
+  }
+  
+  .form-group input {
+    width: 100%; /* Make inputs fill their parent divs */
+    padding: 10px; /* Add padding for better look */
+    border: 0; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding/border in total width */
+  }
+  
+  .feature-group{
+    grid-template-columns: 20px repeat(auto-fit, minmax(10px, 1fr));
+  }
+  
+  .stat-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); /* Adjust column size */
+    gap: 10px; /* Add spacing between inputs */
+    width: 100%; /* Ensure it spans the container width */
+    box-sizing: border-box; /* Include padding/border in total width */
+  }
+  
+  .stat-group div {
+    width: 100%; /* Ensure wrapper div spans the column */
+  }
+  
+  .stat-group input {
+    padding: 10px; /* Add padding for better look */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding/border in total width */
+  }
+  
+  .delete-row-icon{
+  background-color: rgba(0,0,0,0);
+  padding-left:5px;
+  color: red;
+  }
+  
+  .delete-row-icon:hover{
+  background-color: rgba(0,0,0,0);
+  color: rgb(144, 14, 14);
+  }
+  
+  .toggle-header {
+  display: flex;
+  align-items: center; /* Ensures button and h3 are on the same line */
+  gap: 8px; /* Adds space between button and heading */
+  }
+  
+  .toggleButton {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  }
+  
+  
+  .form-group, .toggle-container, .addButton{
+  margin-top:10px;
+  }
+  
+  .form-section{
+  margin:10px;
+  }
+  
+  .form-section h2{
+  text-align:left;
+  display: flex;
+  }
+  
+  .form-section-header {
+  cursor: pointer;
+  padding: 10px 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+  }
+  
+  .form-section-header span {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Pushes the arrow to the far right */
+  }
+  
+  .form-section-header i {
+  margin-right: 10px;
+  color: #5f6368;
+  }
+  
+  .toggle-arrow {
+  transition: transform 0.3s ease;
+  }
+  
+  .expanded .toggle-arrow {
+  transform: rotate(180deg);
+  }
+  
+  
+  .form-section-content {
+  background: #f5f5f5;
+  border-radius: 10px;
+  margin: 0px 10px; /* Ensure no extra space */
+  padding: 0px 10px; /* Remove padding to prevent visible background */
+  max-height: 0; /* Collapse content initially */
+  overflow: hidden;
+  opacity: 0; /* Hide content until expanded */
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out, margin 0.3s ease-out;
+  }
+  
+  
+  .tab-button {
+  padding: 10px;
+  background: lightgray;
+  cursor: pointer;
+  }
+  
+  .tab-button.active {
+  background: gray;
+  font-weight: bold;
+  }
+  
+  .hp{
+  text-align:right;
+  }
+  
+  .tabs{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-left:20px;
+  padding-right:40px;
+  }
+
+  .toggle-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .toggle-container label {
+    margin-right: 5px;
+  }
+  

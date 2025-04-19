@@ -1,0 +1,48 @@
+/* === Print Styles === */
+@media print {
+  @page {
+    size: letter landscape;
+    margin: 0.5in;
+  }
+
+  .left {
+    display: none;
+  }
+
+  body {
+    height: auto;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #htmlSandbox.sandbox {
+    position: absolute;
+    top: 0px;
+  }
+
+  #htmlSandbox,
+  #htmlSandbox * {
+    visibility: visible;
+  }
+
+  #htmlSandbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow: visible !important;
+  }
+
+  .sandbox {
+    min-height: auto !important;
+  }
+
+  .card {
+    page-break-inside: avoid;
+    overflow: hidden;
+  }
+}

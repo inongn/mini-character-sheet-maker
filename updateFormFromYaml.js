@@ -45,6 +45,7 @@ function populateSkillsAndSaves(card) {
 
 function populateDynamicElements(card) {
   populateContainer("featuresContainer", card.features, "feature");
+  populateContainer("actionsContainer", card.actions, "action"); // Add this line
   populateContainer("weaponsContainer", card.weapons, "weapon");
   populateContainer("spellsContainer", card.spells, "spell");
   populateContainer("traitsContainer", card.traits, "trait");
@@ -59,6 +60,13 @@ function populateContainer(containerId, items, type) {
 }
 
 function populateSpellSlots(card) {
+  // First, clear all slot inputs to prevent old data or default values from lingering
+  for (let i = 1; i <= 9; i++) {
+    const slotInput = document.getElementById(`spell-slots-lv-${i}`);
+    if (slotInput) slotInput.value = "";
+  }
+
+  // Now populate only if valid spell_slots exist
   if (!card.spell_slots) return;
 
   card.spell_slots.forEach(slot => {
@@ -93,6 +101,13 @@ function createInputElement(type, index, data = {}) {
       { key: "resources", placeholder: "Resource Slots" }, // new resource field
 
     ],
+    action: [
+      { key: "type", placeholder: "Action Type" },
+      { key: "name", placeholder: "Action Name" },
+      { key: "description", placeholder: "Action Description" },
+      { key: "resources", placeholder: "Resource Slots" } // Add this line
+    ],
+        
     weapon: [
       { key: "name", placeholder: "Weapon Name" },
       { key: "description", placeholder: "Weapon Description" },

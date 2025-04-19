@@ -28,7 +28,7 @@ function adjustTextSize() {
       let fontSize = 16;
       container.style.fontSize = fontSize + 'px';
 
-      while (container.scrollHeight > 615 && fontSize > 5) { // Ensure a minimum font size (e.g., 5px)
+      while (container.scrollHeight > 700 && fontSize > 5) { // Ensure a minimum font size (e.g., 5px)
           fontSize -= 0.1; // Decrease font size in smaller increments
           container.style.fontSize = fontSize + 'px';
       }

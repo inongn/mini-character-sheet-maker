@@ -25,6 +25,12 @@ function addEventListeners() {
     addDeleteButtonListeners();
   });
 
+  document.getElementById("addActionButton").addEventListener("click", () => {
+    const index = actionsContainer.children.length;
+    actionsContainer.appendChild(createInputElement("action", index));
+    addDeleteButtonListeners();
+  });
+  
   document.getElementById("addSpellButton").addEventListener("click", () => {
     const index = spellsContainer.children.length;
     spellsContainer.appendChild(createInputElement("spell", index));
